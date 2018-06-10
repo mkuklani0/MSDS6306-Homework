@@ -20,3 +20,5 @@ unemployment_rate Unemployed / (Unemployed + Employed)
 p25th 25th percentile of earnings
 median Median earnings of full-time, year-round workers
 p75th 75th percentile of earnings
+
+June 10 2018 - Added assignment 5 for MSDS homework 6306
