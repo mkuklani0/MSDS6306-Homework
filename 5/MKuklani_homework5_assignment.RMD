@@ -32,6 +32,9 @@ head(df)
 # no of rows in the dataset
 nrow(df)
 
+summary(df)
+
+str(df)
 ```
 
 ## c.	Your client tells you that there is a problem with the raw file.  One name was entered twice and misspelled.  The client cannot remember which name it is; there are thousands he saw! But he did mention he accidentally put three y's at the end of the name.  Write an R command to figure out which name it is and display it.  
@@ -64,21 +67,21 @@ nrow(y2016)
 setwd("E:/Mahesh/SMU/MSDS6306 Doing Data Science/DataSets")
 
 # read the text file
-df.2015 <- read.table("yob2015.txt", sep = ",")
+y2015 <- read.table("yob2015.txt", sep = ",")
 
 # set the column names to name, gender and children
-colnames(df.2015) <- c("name", "gender", "children")
+colnames(y2015) <- c("name", "gender", "children")
 
-head(df.2015)
+head(y2015)
 
 # display last 10 rows of this dataset
 
-tail(df.2015, 10)
+tail(y2015, 10)
 
 ## All these names are rare and are for male gender
 
 #Merge the dataset based on name and gender
-final <- merge(df, df.2015, by=c("name", "gender"))
+final <- merge(df, y2015, by=c("name", "gender"))
 
 #check if there are any na values in the merge
 

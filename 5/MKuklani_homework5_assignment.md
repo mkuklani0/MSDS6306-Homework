@@ -10,7 +10,7 @@ output:
 
 
 ## 1.	Data Munging (30 points): Utilize yob2016.txt for this question. This file is a series of popular children's names born in the year 2016 in the United States.  It consists of three columns with a first name, a gender, and the amount of children given that name.  However, the data is raw and will need cleaning to make it tidy and usable.  
-### a.	First, import the .txt file into R so you can process it.  Keep in mind this is not a CSV file.  You might have to open the file to see what you're dealing with.  Assign the resulting data frame to an object, df, that consists of three columns with human-readable column names for each.   
+### a.	First, import the .txt file into R so you can process it.  Keep in mind this is not a CSV file.  You might have to open the file to see what you're dealing with.  Assign the resulting data frame to an object, df, that consists of three columns with human-readable column names for each.   jjujhslkdskjkkjkljkjkdjflkjwiaejfkldlkaghieu
 ### b.	Display the summary and structure of df  
 
 
@@ -46,6 +46,32 @@ nrow(df)
 
 ```
 ## [1] 32869
+```
+
+```r
+summary(df)
+```
+
+```
+##       name       gender       children      
+##  Aalijah:    2   F:18758   Min.   :    5.0  
+##  Aaliyan:    2   M:14111   1st Qu.:    7.0  
+##  Aamari :    2             Median :   12.0  
+##  Aarian :    2             Mean   :  110.7  
+##  Aarin  :    2             3rd Qu.:   30.0  
+##  Aaris  :    2             Max.   :19414.0  
+##  (Other):32857
+```
+
+```r
+str(df)
+```
+
+```
+## 'data.frame':	32869 obs. of  3 variables:
+##  $ name    : Factor w/ 30295 levels "Aaban","Aabha",..: 9317 22546 3770 26409 12019 20596 6185 339 9298 11222 ...
+##  $ gender  : Factor w/ 2 levels "F","M": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ children: int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ...
 ```
 
 ## c.	Your client tells you that there is a problem with the raw file.  One name was entered twice and misspelled.  The client cannot remember which name it is; there are thousands he saw! But he did mention he accidentally put three y's at the end of the name.  Write an R command to figure out which name it is and display it.  
@@ -95,12 +121,12 @@ nrow(y2016)
 setwd("E:/Mahesh/SMU/MSDS6306 Doing Data Science/DataSets")
 
 # read the text file
-df.2015 <- read.table("yob2015.txt", sep = ",")
+y2015 <- read.table("yob2015.txt", sep = ",")
 
 # set the column names to name, gender and children
-colnames(df.2015) <- c("name", "gender", "children")
+colnames(y2015) <- c("name", "gender", "children")
 
-head(df.2015)
+head(y2015)
 ```
 
 ```
@@ -116,7 +142,7 @@ head(df.2015)
 ```r
 # display last 10 rows of this dataset
 
-tail(df.2015, 10)
+tail(y2015, 10)
 ```
 
 ```
@@ -137,7 +163,7 @@ tail(df.2015, 10)
 ## All these names are rare and are for male gender
 
 #Merge the dataset based on name and gender
-final <- merge(df, df.2015, by=c("name", "gender"))
+final <- merge(df, y2015, by=c("name", "gender"))
 
 #check if there are any na values in the merge
 

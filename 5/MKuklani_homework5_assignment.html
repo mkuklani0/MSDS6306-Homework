@@ -127,8 +127,8 @@ $(document).ready(function () {
 
 <div id="data-munging-30-points-utilize-yob2016.txt-for-this-question.-this-file-is-a-series-of-popular-childrens-names-born-in-the-year-2016-in-the-united-states.-it-consists-of-three-columns-with-a-first-name-a-gender-and-the-amount-of-children-given-that-name.-however-the-data-is-raw-and-will-need-cleaning-to-make-it-tidy-and-usable." class="section level2">
 <h2>1. Data Munging (30 points): Utilize yob2016.txt for this question. This file is a series of popular children’s names born in the year 2016 in the United States. It consists of three columns with a first name, a gender, and the amount of children given that name. However, the data is raw and will need cleaning to make it tidy and usable.</h2>
-<div id="a.-first-import-the-.txt-file-into-r-so-you-can-process-it.-keep-in-mind-this-is-not-a-csv-file.-you-might-have-to-open-the-file-to-see-what-youre-dealing-with.-assign-the-resulting-data-frame-to-an-object-df-that-consists-of-three-columns-with-human-readable-column-names-for-each." class="section level3">
-<h3>a. First, import the .txt file into R so you can process it. Keep in mind this is not a CSV file. You might have to open the file to see what you’re dealing with. Assign the resulting data frame to an object, df, that consists of three columns with human-readable column names for each.</h3>
+<div id="a.-first-import-the-.txt-file-into-r-so-you-can-process-it.-keep-in-mind-this-is-not-a-csv-file.-you-might-have-to-open-the-file-to-see-what-youre-dealing-with.-assign-the-resulting-data-frame-to-an-object-df-that-consists-of-three-columns-with-human-readable-column-names-for-each.-jjujhslkdskjkkjkljkjkdjflkjwiaejfkldlkaghieu" class="section level3">
+<h3>a. First, import the .txt file into R so you can process it. Keep in mind this is not a CSV file. You might have to open the file to see what you’re dealing with. Assign the resulting data frame to an object, df, that consists of three columns with human-readable column names for each. jjujhslkdskjkkjkljkjkdjflkjwiaejfkldlkaghieu</h3>
 </div>
 <div id="b.-display-the-summary-and-structure-of-df" class="section level3">
 <h3>b. Display the summary and structure of df</h3>
@@ -154,6 +154,20 @@ head(df)</code></pre>
 <pre class="r"><code># no of rows in the dataset
 nrow(df)</code></pre>
 <pre><code>## [1] 32869</code></pre>
+<pre class="r"><code>summary(df)</code></pre>
+<pre><code>##       name       gender       children      
+##  Aalijah:    2   F:18758   Min.   :    5.0  
+##  Aaliyan:    2   M:14111   1st Qu.:    7.0  
+##  Aamari :    2             Median :   12.0  
+##  Aarian :    2             Mean   :  110.7  
+##  Aarin  :    2             3rd Qu.:   30.0  
+##  Aaris  :    2             Max.   :19414.0  
+##  (Other):32857</code></pre>
+<pre class="r"><code>str(df)</code></pre>
+<pre><code>## 'data.frame':    32869 obs. of  3 variables:
+##  $ name    : Factor w/ 30295 levels &quot;Aaban&quot;,&quot;Aabha&quot;,..: 9317 22546 3770 26409 12019 20596 6185 339 9298 11222 ...
+##  $ gender  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ children: int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ...</code></pre>
 </div>
 </div>
 <div id="c.-your-client-tells-you-that-there-is-a-problem-with-the-raw-file.-one-name-was-entered-twice-and-misspelled.-the-client-cannot-remember-which-name-it-is-there-are-thousands-he-saw-but-he-did-mention-he-accidentally-put-three-ys-at-the-end-of-the-name.-write-an-r-command-to-figure-out-which-name-it-is-and-display-it." class="section level2">
@@ -191,12 +205,12 @@ nrow(y2016)</code></pre>
 setwd(&quot;E:/Mahesh/SMU/MSDS6306 Doing Data Science/DataSets&quot;)
 
 # read the text file
-df.2015 &lt;- read.table(&quot;yob2015.txt&quot;, sep = &quot;,&quot;)
+y2015 &lt;- read.table(&quot;yob2015.txt&quot;, sep = &quot;,&quot;)
 
 # set the column names to name, gender and children
-colnames(df.2015) &lt;- c(&quot;name&quot;, &quot;gender&quot;, &quot;children&quot;)
+colnames(y2015) &lt;- c(&quot;name&quot;, &quot;gender&quot;, &quot;children&quot;)
 
-head(df.2015)</code></pre>
+head(y2015)</code></pre>
 <pre><code>##       name gender children
 ## 1     Emma      F    20415
 ## 2   Olivia      F    19638
@@ -206,7 +220,7 @@ head(df.2015)</code></pre>
 ## 6      Mia      F    14871</code></pre>
 <pre class="r"><code># display last 10 rows of this dataset
 
-tail(df.2015, 10)</code></pre>
+tail(y2015, 10)</code></pre>
 <pre><code>##         name gender children
 ## 33054   Ziyu      M        5
 ## 33055   Zoel      M        5
@@ -221,7 +235,7 @@ tail(df.2015, 10)</code></pre>
 <pre class="r"><code>## All these names are rare and are for male gender
 
 #Merge the dataset based on name and gender
-final &lt;- merge(df, df.2015, by=c(&quot;name&quot;, &quot;gender&quot;))
+final &lt;- merge(df, y2015, by=c(&quot;name&quot;, &quot;gender&quot;))
 
 #check if there are any na values in the merge
 
