@@ -8,3 +8,4 @@ Once data is tidy we have to read in the other file yob2015.txt and merge these 
 
 From the total count we have to find out the 10 most popular names and then 10 most popular girl names and store this information in .csv file.
 
+Modified file .RMD with some changes.
